@@ -89,6 +89,8 @@ RUN set -x \
 	&& rm -rf "$nativeBuildDir" \
 	&& rm bin/tomcat-native.tar.gz
 
+COPY resources/tomcat-users.xml /usr/local/tomcat/conf/
+
 # verify Tomcat Native is working properly
 RUN set -e \
 	&& nativeLines="$(catalina.sh configtest 2>&1)" \
